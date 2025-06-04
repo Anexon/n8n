@@ -26,7 +26,7 @@ pipeline {
         sh '''
         export $(grep -v '^#' .env | xargs)
         docker-compose down          
-        NODE_OPTIONS="--max-old-space-size=2048" docker-compose build
+        NODE_OPTIONS="--max-old-space-size=2048" docker-compose build --no-cache
         docker-compose up -d --build
         '''
       }
